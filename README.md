@@ -64,7 +64,7 @@ A systematic evaluation demonstrates a clear performance hierarchy, validating t
 
 The validation accuracy curves illustrate the different learning dynamics. The ViT shows the most stable convergence, while the ResNet learns aggressively but with higher variance. LeNet-5 plateaus early, indicative of its limited learning capacity.
 
-![Comparative Validation Accuracy](assets/comparative_accuracy.png)
+![Comparative Validation Accuracy](assets/9.png)
 
 ### Confusion Matrix Analysis
 
@@ -72,20 +72,19 @@ The raw-count confusion matrices show the specific number of misclassifications 
 
 | LeNet-5 (Baseline) | ResNet-18 |
 | :---: | :---: |
-| ![LeNet-5 Confusion Matrix](assets/lenet_cm.png) | ![ResNet-18 Confusion Matrix](assets/resnet_cm.png) |
+| ![LeNet-5 Confusion Matrix](assets/7.png) | ![ResNet-18 Confusion Matrix](assets/2.png) |
 | **Vision Transformer** | **ResNet-18 Ensemble** |
-| ![ViT Confusion Matrix](assets/vit_cm.png) | ![Ensemble Confusion Matrix](assets/ensemble_cm.png) |
+| ![ViT Confusion Matrix](assets/8.png) | ![Ensemble Confusion Matrix](assets/6.png) |
 
 The normalized confusion matrices below make it easier to compare the per-class recall rates (the diagonal) directly. The diagonal becomes progressively brighter and more solid, indicating higher recall and a more confident model.
 
-![Comparative Normalized Confusion Matrices](assets/normalized_cm_comparison.png)
-
+![Comparative Normalized Confusion Matrices](assets/10.png)
 
 ### Per-Class F1-Score Comparison
 
 This plot highlights where the improvements were most significant. The ensemble model dramatically boosts the F1-score for challenging classes like `Highway` and `PermanentCrop`, effectively solving the baseline model's primary weaknesses.
 
-![Comparative F1 Scores](assets/f1_score_comparison.png)
+![Comparative F1 Scores](assets/11.png)
 
 ## Uncertainty Quantification
 
@@ -97,13 +96,13 @@ We implemented Bayesian approximation techniques to quantify model confidence. T
 
 | MC Dropout (Single ResNet) | Deep Ensemble |
 | :---: | :---: |
-| ![MC Dropout Examples](assets/mc_dropout_examples.png) | ![Ensemble Uncertainty Examples](assets/ensemble_uncertainty_examples.png) |
+| ![MC Dropout Examples](assets/3.png) | ![Ensemble Uncertainty Examples](assets/5.png) |
 
 ### Mean Uncertainty by Class
 
 Analysis revealed a strong correlation between high uncertainty and high misclassification rates. The classes the models found most difficult, such as `PermanentCrop` and `Highway`, consistently exhibited the highest predictive variance.
 
-![Mean Uncertainty by Class](assets/mean_uncertainty_by_class.png)
+![Mean Uncertainty by Class](assets/4.png)
 
 ## Advanced Analysis
 
@@ -111,7 +110,7 @@ Analysis revealed a strong correlation between high uncertainty and high misclas
 
 To understand *why* the ensemble generalizes better, we analyzed the geometry of the optimization landscape by approximating the **trace of the Hessian matrix**. The results provide quantitative evidence for the "flat minima" hypothesis: the ensemble member converged to a significantly flatter (lower sharpness score) minimum than the singularly trained ResNet, indicating a more robust solution.
 
-![Loss Landscape Sharpness](assets/loss_landscape_sharpness.png)
+![Loss Landscape Sharpness](assets/12.png)
 
 ## Proposed Financial Application
 
